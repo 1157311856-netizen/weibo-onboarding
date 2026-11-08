@@ -1,0 +1,82 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>微博风格 · 企业知识中心</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f7f5;color:#17253e;font:15px/1.65 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:0 36px 40px}nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dfe6ef}.brand{font-size:19px;font-weight:750}.brand b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#c22a22;color:white;margin-right:10px}.badge{background:#fff0e6;color:#a12d13;border-radius:5px;padding:4px 9px;font-size:12px}header{padding:34px 0 24px}small{color:#526580;font-size:13px}h1{margin:4px 0;font-size:33px;letter-spacing:-.035em}header p{margin:3px 0;color:#526580}.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(270px,1fr);gap:20px;align-items:start}section,aside{background:white;padding:24px;border-radius:12px;border:1px solid #dce4f0}h2{font-size:17px;margin:0 0 12px}label{display:block;font-weight:600;margin-bottom:6px}textarea{width:100%;min-height:86px;padding:12px;border:1px solid #aab9d0;border-radius:8px;font:inherit;resize:vertical}button{cursor:pointer;border:0;border-radius:7px;background:#c22a22;color:white;padding:9px 15px;font:inherit;margin:6px 4px 0 0}button:hover{filter:brightness(.92)}.sample{background:#fff2e9;color:#992e18;font-size:13px}#result{overflow-wrap:anywhere;min-height:110px;background:#f8f7f5;border-radius:8px;margin-top:18px;padding:16px;color:#253858}details{border-top:1px solid #e0e7f1;padding:12px 0;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:600;font-size:14px}.meta{color:#526580;font-size:13px}input[type=file]{width:100%;font:inherit;font-size:13px}#filter{width:100%;padding:9px;border:1px solid #aab9d0;border-radius:7px;font:inherit;margin:12px 0 8px}#samples{margin-top:12px}.section-label{font-size:12px;color:#526580;margin-right:6px}@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:0 15px 24px}h1{font-size:27px}}
+</style><main><nav><span class="brand"><svg aria-label="微博风格图标" width="40" height="34" viewBox="0 0 44 36" style="vertical-align:middle;margin-right:8px"><path d="M31 5c5 0 9 4 9 9M31 10c3 0 4 2 4 4" fill="none" stroke="#f49316" stroke-width="3" stroke-linecap="round"/><path d="M29 17c4-8-3-9-8-5-4-7-16 4-17 11-1 7 8 12 18 10 10-1 17-7 15-12-1-2-4-4-8-4Z" fill="#d82f26"/><ellipse cx="20" cy="24" rx="12" ry="6" fill="white"/><ellipse cx="19" cy="24" rx="5" ry="4" fill="#272323"/><circle cx="17.5" cy="23" r="1.3" fill="white"/></svg>企业知识中心</span><span class="badge">作品集演示 · 非官方</span></nav><header><small>员工服务 / 知识中心</small><h1>企业知识问答</h1><p>微博新人入职助手 · 查询日常流程、系统权限和团队协作规则。</p></header><div class="grid"><section><h2>员工自助问答</h2><form id="form"><label for="q">你的问题</label><textarea id="q" required maxlength="500" placeholder="例如：新人如何请假？"></textarea><button>检索知识库</button><button type="button" class="sample" id="reset">清空当前问题</button></form><div id="samples"><span class="section-label">常见问题</span></div><div id="result" aria-live="polite">试试下方资料覆盖的问题，或输入“公司有哪些海外分部？”体验资料不足时的回应。</div><p class="meta">演示模式 · 默认模式 · 本地检索与原文摘录</p><details><summary>本次会话的问答历史 <span id="historyCount"></span></summary><ol id="history"></ol><button class="sample" id="export">导出问答记录</button><button class="sample" id="clearHistory">清空记录</button></details></section><aside><h2>知识库文档 <span id="count" class="badge"></span></h2><p class="meta">内置《微博新人入职手册》模拟稿，所有制度与系统入口均为虚构。上传资料仅保存在当前页面。</p><label for="upload">导入 UTF-8 文本</label><input id="upload" type="file" accept=".txt,.md" multiple><p id="status" class="meta" aria-live="polite"></p><input id="filter" type="search" aria-label="按文档名称筛选" placeholder="按文档名称筛选"><button class="sample" id="clearDocs">移除导入文档</button><div id="docs"></div></aside></div></main>
+<script>
+const kb=[{"name": "微博新人入职手册（虚构） · 请假与销假", "keys": ["请假", "休假", "病假", "事假", "年假", "调休", "销假"], "body": "在模拟 OA 的「考勤 → 请假申请」选择假别、起止时间，填写交接人并提交直属负责人。突发病假先通知负责人，再按页面提示补单。提前返岗可在原申请中发起销假。假期余额在「考勤 → 我的假期」查看。"}, {"name": "微博新人入职手册（虚构） · 报到与入职", "keys": ["入职", "报到", "第一天", "新人", "新员工", "门禁", "工牌", "电脑"], "body": "入职当天先按通知到前台签到，联系 HR 确认资料，再到 IT 服务台领取电脑和工牌。和导师确认办公座位、团队群、首周安排。"}, {"name": "微博新人入职手册（虚构） · 打卡与补卡", "keys": ["考勤", "打卡", "忘记", "漏打", "补卡", "迟到"], "body": "打开模拟 OA 的「考勤 → 补卡申请」，选择日期和缺失的打卡记录，填写原因后提交直属负责人。审批后到「我的考勤」核对记录。"}, {"name": "微博新人入职手册（虚构） · 账号和权限", "keys": ["权限", "账号", "登录", "VPN", "开通", "邮箱", "工单"], "body": "在「IT 服务台 → 权限申请」选择系统，填写业务用途和所需权限，提交直属负责人审批。首次登录失败可在 IT 服务台提交账号工单。"}, {"name": "微博新人入职手册（虚构） · 办公设备与故障", "keys": ["电脑", "设备", "坏了", "故障", "工单", "IT", "网络"], "body": "通过「IT 服务台 → 设备与网络」提交工单，填写资产编号、故障时间和现象。无法联网时可携带设备到现场服务台。"}, {"name": "微博新人入职手册（虚构） · 差旅与报销", "keys": ["差旅", "报销", "发票", "凭证", "出差"], "body": "出差前在「财务 → 出差申请」提交行程。返程后在「财务 → 费用报销」关联审批单，上传发票、行程单和支付凭证，提交审核。"}, {"name": "微博新人入职手册（虚构） · 远程办公", "keys": ["远程", "居家", "在家", "办公"], "body": "在「考勤 → 远程办公」填写日期、工作安排和可联系时间，经直属负责人审批后执行。使用已开通的公司账号访问工作系统。"}, {"name": "微博新人入职手册（虚构） · 导师与首周计划", "keys": ["导师", "带教", "首周", "第一周", "培训", "适应"], "body": "第一天和导师完成入职清单；第一周完成信息安全与业务基础培训，旁听团队例会。周末前与导师复盘已完成任务、待开通权限和下一周目标。"}, {"name": "微博新人入职手册（虚构） · 内容运营入门", "keys": ["内容", "运营", "热搜", "审核", "发布", "舆情", "值班"], "body": "新人先阅读团队内容规范，跟随导师旁听选题会。运营素材先在测试环境预览，按团队审核流程确认后发布。发现异常内容，记录链接和时间，通过值班群上报。"}, {"name": "微博新人入职手册（虚构） · 试用期与转正", "keys": ["试用", "转正", "目标", "绩效"], "body": "入职首周与主管确认试用期目标和检查节点。转正前整理任务交付、反馈及复盘，在模拟 OA「人事 → 转正申请」提交材料。"}, {"name": "微博新人入职手册（虚构） · 信息安全与对外分享", "keys": ["安全", "保密", "对外", "分享", "数据", "泄露"], "body": "内部资料仅通过授权渠道流转。对外分享前确认公开范围和审批要求。误发资料时应及时报告负责人和信息安全服务台，提供时间、范围及影响线索。"}];
+const records=[];
+const historyList=document.querySelector('#history');
+function renderHistory(){
+ historyList.replaceChildren();
+ document.querySelector('#historyCount').textContent='（'+records.length+' 条）';
+ for(const record of [...records].reverse()){
+  const li=document.createElement('li'),button=document.createElement('button');
+  button.className='sample';button.textContent=record.query;
+  button.onclick=()=>{q.value=record.query;ask(false)};
+  li.append(button);historyList.append(li);
+ }
+ document.querySelector('#export').disabled=!records.length;
+}
+renderHistory();
+document.querySelector('#clearHistory').onclick=()=>{records.length=0;renderHistory()};
+document.querySelector('#export').onclick=()=>{
+ const url=URL.createObjectURL(new Blob([records.map(r=>r.query+'\n'+r.answer).join('\n\n')],{type:'text/plain;charset=utf-8'}));
+ const link=document.createElement('a');link.href=url;link.download='知识中心问答记录.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+const q=document.querySelector('#q'),result=document.querySelector('#result'),docs=document.querySelector('#docs'),status=document.querySelector('#status');
+function showDoc(doc){
+ const d=document.createElement('details'),s=document.createElement('summary'),p=document.createElement('p');
+ s.textContent=doc.name;p.textContent=doc.body;d.append(s,p);docs.append(d);doc.element=d; document.querySelector('#count').textContent=new Set(kb.map(item=>item.name.split(' · ')[0])).size+' 份';
+}
+kb.forEach(showDoc);
+const initialCount=kb.length;
+const initialDocCount=new Set(kb.map(doc=>doc.name.split(' · ')[0])).size;
+document.querySelector('#clearDocs').onclick=()=>{
+ for(const doc of kb.splice(initialCount))doc.element.remove();
+ document.querySelector('#count').textContent=initialDocCount+' 份';
+ status.textContent='已恢复示例文档。';
+ result.textContent='请输入问题，检索当前知识库。';
+};
+document.querySelector('#reset').onclick=()=>{q.value='';result.textContent='请输入问题，检索当前知识库。';q.focus()};
+
+const filter=document.querySelector('#filter');
+filter.oninput=()=>kb.forEach(doc=>{doc.element.hidden=!doc.name.toLowerCase().includes(filter.value.trim().toLowerCase())});
+
+document.querySelector('#upload').onchange=async e=>{
+ const files=[...e.target.files];let count=0;
+ for(const file of files){
+  if(!/\.(txt|md)$/i.test(file.name)||file.size>200000)continue;
+  const body=(await file.text()).trim();
+  for(let i=0;i<body.length;i+=450){
+   const doc={name:file.name+' · 片段 '+(1+i/450),body:body.slice(i,i+500)};
+   kb.push(doc);showDoc(doc);count++;
+  }
+ }
+ filter.oninput();
+ status.textContent=count?'已加入 '+count+' 个片段。':'没有导入内容。支持 200 KB 以内的 TXT 或 Markdown。';
+ e.target.value='';
+};
+const grams=t=>new Set((t.toLowerCase().match(/[\p{L}\p{N}]+/gu)||[]).flatMap(w=>/[\u3400-\u9fff]/.test(w)?Array.from({length:Math.max(0,w.length-1)},(_,i)=>w.slice(i,i+2)):[w]));
+function ask(record=true){
+ const query=q.value.trim();if(!query)return;
+ const tokens=grams(query);
+ const hits=kb.map(doc=>({doc,score:[...grams(doc.name.split(' · ').at(-1)+' '+doc.body)].filter(x=>tokens.has(x)).length+(doc.keys||[]).filter(key=>query.toLowerCase().includes(key.toLowerCase())).length*4})).filter(x=>x.score>=2).sort((a,b)=>b.score-a.score).slice(0,3);
+ if(record){
+  records.push({query,answer:hits.length?hits.map(({doc})=>doc.name+'\n'+doc.body).join('\n'):'当前资料不足以回答。'});
+  renderHistory();
+ }
+ result.replaceChildren();
+ const heading=document.createElement('strong');heading.textContent=query;result.append(heading);
+ if(!hits.length){const p=document.createElement('p');p.textContent='当前资料不足以回答。可以换个问法，或上传相关制度文档。';result.append(p);return}
+ hits.forEach(({doc},i)=>{
+  const p=document.createElement('p'),a=document.createElement('button');
+  p.textContent=doc.body;a.className='sample';a.textContent='['+(i+1)+'] '+doc.name;
+  a.onclick=()=>{filter.value='';filter.oninput();doc.element.open=true;doc.element.scrollIntoView({block:'nearest'});doc.element.querySelector('summary').focus()};
+  result.append(p,a);
+ });
+}
+document.querySelector('#form').onsubmit=e=>{e.preventDefault();ask()};
+for(const sample of ['新人如何请假？','忘记打卡怎么补？','如何申请系统权限？','入职第一周做什么？','差旅怎么报销？']){
+ const b=document.createElement('button');b.className='sample';b.textContent=sample;b.onclick=()=>{q.value=sample;ask()};document.querySelector('#samples').append(b);
+}
+</script></html>
